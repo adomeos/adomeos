@@ -10,6 +10,7 @@ export function Quiz() {
     step,
     currentQuestionIndex,
     currentQuestion,
+    answers,
     leadData,
     progress,
     totalQuestions,
@@ -37,7 +38,7 @@ export function Quiz() {
         {step === 'capture' && <CapturePage key="capture" onSubmit={submitLead} />}
         
         {step === 'confirmation' && leadData && (
-          <ConfirmationPage key="confirmation" leadData={leadData} />
+          <ConfirmationPage key="confirmation" leadData={leadData} answers={answers} />
         )}
       </AnimatePresence>
     </div>
