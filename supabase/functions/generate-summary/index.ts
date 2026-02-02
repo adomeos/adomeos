@@ -181,6 +181,41 @@ interface Answer {
   value: string | number | string[];
 }
 
+interface LeadData {
+  firstName: string;
+  email: string;
+  phone: string;
+}
+
+const WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/pUkXYvprsnYvdTCCNF9R/webhook-trigger/bde53c07-d7bb-47f5-82cf-f4747aa9b5be";
+
+async function sendToWebhook(leadData: LeadData, summary: string, answers: Answer[]) {
+  try {
+    const response = await fetch(WEBHOOK_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        firstName: leadData.firstName,
+        email: leadData.email,
+        phone: leadData.phone,
+        summary: summary,
+        answers: answers,
+        timestamp: new Date().toISOString(),
+      }),
+    });
+    
+    if (!response.ok) {
+      console.error("Webhook error:", response.status, await response.text());
+    } else {
+      console.log("Webhook sent successfully");
+    }
+  } catch (error) {
+    console.error("Failed to send webhook:", error);
+  }
+}
+
 function formatAnswersForAI(answers: Answer[]): string {
   const categories: Record<string, string[]> = {};
 
@@ -260,7 +295,7 @@ serve(async (req) => {
   }
 
   try {
-    const { answers } = await req.json() as { answers: Answer[] };
+    const { answers, leadData } = await req.json() as { answers: Answer[]; leadData?: LeadData };
 
     if (!answers || !Array.isArray(answers)) {
       return new Response(
@@ -321,6 +356,12 @@ serve(async (req) => {
     const summary = data.choices?.[0]?.message?.content?.trim() || "";
 
     console.log("Generated summary:", summary);
+
+    // Send to webhook if leadData is provided
+    if (leadData) {
+      // Fire and forget - don't block the response
+      sendToWebhook(leadData, summary, answers);
+    }
 
     return new Response(
       JSON.stringify({ summary }),
