@@ -1,188 +1,166 @@
 
-# Résumé Personnalisé en 600 caractères
+
+# Intégration IA pour les Résumés - Toutes les 17 Questions
 
 ## Ce que je vais créer
 
-Un système d'analyse qui génère un résumé empathique et personnalisé basé sur 12 questions clés du quiz. Le résumé fera moins de 600 caractères pour être plus détaillé tout en restant percutant.
+Une Edge Function qui envoie **toutes les 17 questions et réponses** à Lovable AI pour générer un résumé empathique et personnalisé de moins de 600 caractères.
 
-## Exemple de résultat
+## Les 17 questions envoyées à l'IA
 
-> "Tu tournes à 100% en permanence. Le matin, t'es déjà sur ton téléphone avant même de te lever. Quand t'atteins un objectif, tu passes direct au suivant sans célébrer. Ton sommeil ? Insuffisant. Ta voix intérieure te dit que t'es jamais assez bien. T'as essayé la thérapie et le dev perso, mais ça a marché un temps puis t'as rechuté. Aujourd'hui, t'es à 7/10 sur l'échelle de l'épuisement. Mais t'es prêt à changer. On va t'aider."
+| ID | Catégorie | Question |
+|----|-----------|----------|
+| 1 | Hook | Rapport au repos |
+| 2 | Ton fonctionnement | Premier réflexe le matin |
+| 3 | Ton fonctionnement | Quand t'atteins un objectif |
+| 4 | Ton fonctionnement | Ce que les gens diraient de toi |
+| 5 | Ton corps | Ton sommeil |
+| 6 | Ton corps | Rapport à la nourriture |
+| 7 | Ta tête | Journée off sans obligations |
+| 8 | Ta tête | Voix intérieure dominante |
+| 9 | Ta tête | Réaction quand ça va pas |
+| 10 | Ta tête | Dernier truc fait pour le plaisir |
+| 11 | Ton état | Échelle épuisement (1-10) |
+| 12 | Ton état | Porter un masque |
+| 13 | Ton état | Phrase du vide intérieur |
+| 14 | Ton parcours | Solutions déjà essayées |
+| 15 | Ton parcours | Résultats des solutions |
+| 16 | Ton déclic | Vision dans 5 ans |
+| 17 | Ton déclic | Prêt à changer |
 
-## Questions mappées pour le résumé
-
-| ID | Question | Ce qu'elle révèle | Priorité |
-|----|----------|-------------------|----------|
-| 1 | Rapport au repos (hook) | Relation toxique au repos | Haute |
-| 2 | Premier réflexe le matin | Hyperconnexion, addiction au travail | Haute |
-| 3 | Atteindre un objectif | Incapacité à savourer les victoires | Moyenne |
-| 4 | Ce que les gens disent | Image sociale, intensité perçue | Basse |
-| 5 | Sommeil | Santé physique, négligence du corps | Haute |
-| 6 | Nourriture | Rapport au corps, contrôle | Moyenne |
-| 7 | Journée off | Incapacité à déconnecter | Moyenne |
-| 8 | Voix intérieure | Auto-critique, pression interne | Haute |
-| 10 | Dernier plaisir | Perte de connexion au plaisir | Moyenne |
-| 11 | Niveau épuisement (slider) | Score chiffré, tangible | Haute |
-| 12 | Porter un masque | Authenticité, isolement | Moyenne |
-| 13 | Phrase du vide | Résonance émotionnelle profonde | Haute |
-| 14 | Solutions essayées (checkbox) | Parcours, efforts déjà faits | Haute |
-| 15 | Résultats des solutions | Frustration, échecs passés | Haute |
-| 16 | Vision dans 5 ans | Conscience du risque | Moyenne |
-| 17 | Prêt à changer | Motivation, ouverture | Haute |
-
-## Logique de génération par blocs
-
-### Bloc 1 : Rythme de vie (questions 1, 2, 7)
+## Comment ça marche
 
 ```text
-Si repos=A -> "Tu te reposes jamais."
-Si repos=B -> "Tu sais que tu devrais te reposer, mais y'a toujours un truc à faire."
-Si matin=A -> "Le matin, t'es déjà sur ton téléphone avant même de te lever."
-Si matin=B -> "T'as une routine stricte, pas le choix."
-Si off=B -> "Même tes jours off, tu travailles."
++------------------+     +-------------------+     +------------------+
+|   17 réponses    | --> |   Edge Function   | --> |  Résumé 600 car  |
+|   complètes      |     |   + Lovable AI    |     |  personnalisé    |
++------------------+     +-------------------+     +------------------+
 ```
 
-### Bloc 2 : Rapport aux objectifs (questions 3, 10)
+## Format des données envoyées à l'IA
+
+L'IA recevra un contexte complet avec chaque question et sa réponse :
 
 ```text
-Si objectif=A -> "Quand t'atteins un objectif, tu passes direct au suivant."
-Si objectif=B -> "C'est jamais assez bien pour toi."
-Si plaisir=A -> "Le plaisir sans objectif ? T'as oublié ce que c'est."
-Si plaisir=C -> "T'as du mal à savoir ce qui te fait plaisir."
+DIAGNOSTIC ADOMEOS - Réponses complètes
+
+[TON FONCTIONNEMENT]
+- Rapport au repos : "Le repos c'est pour les faibles. Je me reposerai quand je serai mort."
+- Premier réflexe matin : "Je checke mon téléphone avant même de me lever"
+- Atteindre objectif : "Satisfaction 2 minutes, puis c'est quoi le prochain"
+- Ce que les gens disent : "Impressionnant mais trop intense"
+
+[TON CORPS]
+- Sommeil : "4-5h et je me dis que c'est suffisant"
+- Nourriture : "J'oublie de manger ou je mange devant l'écran"
+
+[TA TÊTE]
+- Journée off : "Je travaille quand même, juste un peu"
+- Voix intérieure : "T'es pas assez bien. Fais plus."
+- Quand ça va pas : "Analyser, comprendre, résoudre. Tout seul."
+- Dernier plaisir : "Je sais plus. Ça fait longtemps."
+
+[TON ÉTAT]
+- Niveau épuisement : 8/10
+- Porter un masque : "Oui. Personne connaît vraiment ce qui se passe en moi."
+- Phrase du vide : "Putain. C'est exactement ça."
+
+[TON PARCOURS]
+- Solutions essayées : Thérapie, Dev perso, Routines, Coaching
+- Résultats : "Ça a marché un temps, puis j'ai rechuté"
+
+[TON DÉCLIC]
+- Dans 5 ans si rien change : "Même situation, mais encore plus épuisé"
+- Prêt à changer : "Oui. C'est maintenant ou jamais."
 ```
 
-### Bloc 3 : Corps (questions 5, 6)
+## Prompt système optimisé
 
 ```text
-Si sommeil=A -> "Ton sommeil ? 4-5h et tu te dis que ça suffit."
-Si sommeil=B -> "Tu dors, mais tu te réveilles fatigué."
-Si nourriture=A -> "Tu manges devant l'écran sans t'en rendre compte."
-Si nourriture=C -> "Régimes stricts puis craquages. Tu contrôles pas."
+Tu es un coach spécialisé dans l'accompagnement des hauts performeurs en épuisement.
+
+Tu viens de recevoir les réponses complètes d'une personne au diagnostic ADOMEOS.
+Ton rôle : générer un résumé empathique qui montre que tu as VRAIMENT compris sa situation.
+
+RÈGLES STRICTES :
+- Maximum 600 caractères
+- Tutoiement obligatoire
+- Ton direct mais bienveillant, comme un ami qui dit les vérités
+- Phrases courtes et percutantes
+- Fais référence à des éléments SPÉCIFIQUES de ses réponses
+- Pas de jugement, juste de la compréhension
+- Si la personne est prête à changer, termine sur une note d'espoir
+- Commence directement par le contenu, pas de "Voici ton résumé"
+
+IMPORTANT : Chaque résumé doit être UNIQUE basé sur la combinaison exacte des réponses.
 ```
 
-### Bloc 4 : Mental (questions 8, 12, 13)
+## Architecture technique
+
+### Prérequis
+Lovable Cloud doit être activé pour utiliser Lovable AI Gateway.
+
+### Edge Function : `generate-summary`
 
 ```text
-Si voix=A -> "Ta voix intérieure te dit que t'es jamais assez bien."
-Si voix=B -> "T'as peur que tout s'effondre si tu relâches."
-Si masque=A -> "Tu portes un masque. Personne sait vraiment ce qui se passe."
-Si masque=C -> "T'as même plus l'impression de savoir qui tu es."
-Si phrase=A -> "Cette phrase sur le vide intérieur ? Elle te parle direct."
+supabase/functions/generate-summary/index.ts
+     |
+     ├── Recevoir les answers[] du frontend
+     ├── Mapper chaque answer à sa question complète
+     ├── Formater le contexte structuré par catégorie
+     ├── Appeler Lovable AI (google/gemini-3-flash-preview)
+     └── Retourner le résumé généré
 ```
 
-### Bloc 5 : Parcours (questions 14, 15)
+### Modifications frontend
 
 ```text
-Si solutions >= 3 -> "T'as déjà tout essayé : [liste]."
-Si solutions contient "Rien" -> "T'essaies de tout gérer seul."
-Si résultat=A -> "Ça a marché un temps, puis t'as rechuté."
-Si résultat=B -> "Rien n'a vraiment fonctionné. Trop lent, trop superficiel."
+src/components/quiz/ConfirmationPage.tsx
+     |
+     ├── Ajouter état isLoading + skeleton
+     ├── Appeler l'edge function au montage
+     ├── Afficher le résumé avec animation
+     └── Fallback sur generateSummary() si erreur
 ```
 
-### Bloc 6 : État actuel (question 11)
+## Flux utilisateur amélioré
 
 ```text
-"Aujourd'hui, t'es à [X]/10 sur l'échelle de l'épuisement."
+1. Utilisateur soumet formulaire
+          ↓
+2. Page confirmation s'affiche
+   [Skeleton animé dans la box résumé]
+          ↓
+3. Edge function reçoit les 17 réponses
+          ↓
+4. IA analyse et génère (1-2 sec)
+          ↓
+5. Résumé s'affiche avec fade-in
 ```
 
-### Bloc 7 : Projection et motivation (questions 16, 17)
+## Gestion des erreurs
 
-```text
-Si futur=A -> "Tu sais que si tu changes rien, tu seras encore plus épuisé."
-Si futur=C -> "Tu vois le burnout arriver."
-Si prêt=A -> "Mais t'es prêt à changer. C'est maintenant ou jamais."
-Si prêt=B -> "T'as peur de pas y arriver, mais t'es prêt à essayer."
-```
+| Erreur | Solution |
+|--------|----------|
+| Timeout IA (>5s) | Fallback sur `generateSummary()` existant |
+| Erreur 429 (rate limit) | Toast + fallback |
+| Erreur 402 (crédits) | Toast + fallback |
+| Résumé vide | Utiliser le système par règles |
 
-### Clôture empathique
+## Fichiers à créer/modifier
 
-```text
-"On a compris. On va t'aider."
-```
+| Fichier | Action |
+|---------|--------|
+| `supabase/functions/generate-summary/index.ts` | Créer |
+| `supabase/config.toml` | Ajouter fonction |
+| `src/components/quiz/ConfirmationPage.tsx` | Modifier |
+| `src/utils/generateSummary.ts` | Garder (fallback) |
 
-## Algorithme de sélection
+## Étapes d'implémentation
 
-1. Calculer un "score d'intensité" basé sur les réponses A/B vs C/D
-2. Sélectionner les phrases des blocs prioritaires
-3. Assembler en respectant 600 caractères max
-4. Prioriser : Bloc 1 > Bloc 4 > Bloc 6 > Bloc 5 > Bloc 7 > Bloc 2 > Bloc 3
+1. Activer Lovable Cloud (prérequis pour Lovable AI)
+2. Créer l'Edge Function `generate-summary` avec le mapping complet des 17 questions
+3. Modifier `ConfirmationPage.tsx` pour appeler l'edge function
+4. Ajouter un skeleton loader pendant la génération
+5. Implémenter le fallback automatique vers le système actuel
 
-## Structure technique
-
-### Nouveau fichier : `src/utils/generateSummary.ts`
-
-```typescript
-interface SummaryProfile {
-  // Rythme de vie
-  restIssue: 'extreme' | 'cant_stop' | 'guilt' | 'healthy';
-  morningRoutine: 'phone_addict' | 'strict' | 'inconsistent' | 'relaxed';
-  dayOff: 'busy' | 'work_anyway' | 'lost' | 'enjoys';
-  
-  // Objectifs
-  goalFeeling: 'next_please' | 'never_enough' | 'numb' | 'celebrates';
-  lastPleasure: 'forgotten' | 'guilt_after' | 'dont_know' | 'regular';
-  
-  // Corps
-  sleep: 'minimal' | 'tired_anyway' | 'irregular' | 'good';
-  food: 'forgets' | 'fuel_only' | 'cycles' | 'balanced';
-  
-  // Mental
-  innerVoice: 'not_enough' | 'fear_collapse' | 'comparison' | 'kind';
-  mask: 'always' | 'sometimes' | 'lost_identity' | 'authentic';
-  emptyPhrase: 'exactly' | 'partly' | 'not_really' | 'not_at_all';
-  
-  // Parcours
-  triedSolutions: string[];
-  solutionResult: 'relapsed' | 'didnt_help' | 'helped_bit' | 'worked';
-  
-  // État
-  exhaustionLevel: number;
-  
-  // Projection
-  futureVision: 'more_exhausted' | 'scared' | 'burnout' | 'fine';
-  readyToChange: 'now_or_never' | 'afraid_but_yes' | 'unsure' | 'not_really';
-}
-```
-
-## Fichiers à modifier
-
-1. **Créer** `src/utils/generateSummary.ts` - Logique complète d'analyse et génération
-2. **Modifier** `src/components/quiz/Quiz.tsx` - Passer `answers` au ConfirmationPage
-3. **Modifier** `src/components/quiz/ConfirmationPage.tsx` - Afficher le résumé stylisé
-
-## Rendu visuel sur la page de confirmation
-
-```text
-+-------------------------------------------+
-|              [Icone check vert]           |
-|                                           |
-|        C'est envoyé, Thomas !             |
-|                                           |
-|   +-----------------------------------+   |
-|   |  CE QU'ON A COMPRIS               |   |
-|   |                                   |   |
-|   |  "Tu tournes à 100% en perma-     |   |
-|   |  nence. Le matin, t'es déjà sur   |   |
-|   |  ton téléphone. Quand t'atteins   |   |
-|   |  un objectif, tu passes direct    |   |
-|   |  au suivant. Ta voix intérieure   |   |
-|   |  te dit que t'es jamais assez     |   |
-|   |  bien. T'as essayé la thérapie,   |   |
-|   |  ça a marché un temps puis t'as   |   |
-|   |  rechuté. Aujourd'hui, t'es à     |   |
-|   |  7/10 sur l'épuisement. Mais      |   |
-|   |  t'es prêt à changer. On va       |   |
-|   |  t'aider."                        |   |
-|   +-----------------------------------+   |
-|                                           |
-|   Ton diagnostic est en route...          |
-|                                           |
-|   [Box: Prochaines étapes]               |
-+-------------------------------------------+
-```
-
-## Etapes d'implementation
-
-1. Creer `src/utils/generateSummary.ts` avec toute la logique d'analyse des 12 questions
-2. Modifier `Quiz.tsx` pour passer les `answers` au ConfirmationPage
-3. Modifier `ConfirmationPage.tsx` pour afficher le resume dans une box stylisee
