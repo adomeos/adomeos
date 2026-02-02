@@ -1,0 +1,63 @@
+import { motion } from 'framer-motion';
+import { Check, Clock } from 'lucide-react';
+import { LeadFormData } from '@/types/quiz';
+
+interface ConfirmationPageProps {
+  leadData: LeadFormData;
+}
+
+const steps = [
+  { num: 1, text: 'Tu vas recevoir un email avec ton analyse détaillée.', note: 'Vérifie tes spams si tu ne vois rien.' },
+  { num: 2, text: 'On te contacte dans les 24h pour un échange.', note: 'Gratuit et sans engagement.' },
+  { num: 3, text: 'Tu décides si tu veux aller plus loin.', note: 'À ton rythme.' },
+];
+
+export function ConfirmationPage({ leadData }: ConfirmationPageProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="flex flex-col justify-center text-center min-h-[calc(100vh-80px)]"
+    >
+      <motion.div
+        initial={{ scale: 0.5, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="w-[100px] h-[100px] mx-auto mb-8 bg-gradient-to-br from-success/20 to-success/5 border border-success rounded-full flex items-center justify-center"
+      >
+        <Check className="w-12 h-12 text-success" strokeWidth={2} />
+      </motion.div>
+
+      <h1 className="text-3xl md:text-[32px] font-bold leading-tight">
+        C'est envoyé, {leadData.firstName} !
+      </h1>
+
+      <p className="mt-4 text-lg text-muted-foreground leading-relaxed max-w-[440px] mx-auto">
+        Ton diagnostic est en route vers <strong className="text-foreground">{leadData.email}</strong>.<br />
+        Voici la suite du programme.
+      </p>
+
+      <div className="mt-10 bg-card border border-border rounded-2xl p-7 text-left">
+        <h3 className="text-sm font-semibold text-primary mb-5 flex items-center gap-2">
+          <Clock className="w-[18px] h-[18px]" />
+          Prochaines étapes
+        </h3>
+
+        {steps.map((step, i) => (
+          <div
+            key={step.num}
+            className="flex gap-4 py-4 border-b border-border last:border-b-0 last:pb-0"
+          >
+            <div className="w-7 h-7 bg-background rounded-lg flex items-center justify-center text-sm font-semibold text-primary font-mono flex-shrink-0">
+              {step.num}
+            </div>
+            <div className="pt-0.5">
+              <p className="text-[15px] leading-relaxed">{step.text}</p>
+              <span className="text-muted-foreground text-sm">{step.note}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </motion.div>
+  );
+}
