@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
-import { Check, Clock } from 'lucide-react';
-import { LeadFormData } from '@/types/quiz';
+import { Check, Clock, Quote } from 'lucide-react';
+import { LeadFormData, Answer } from '@/types/quiz';
+import { generateSummary } from '@/utils/generateSummary';
 
 interface ConfirmationPageProps {
   leadData: LeadFormData;
+  answers: Answer[];
 }
 
 const steps = [
@@ -12,7 +14,9 @@ const steps = [
   { num: 3, text: 'Tu décides si tu veux aller plus loin.', note: 'À ton rythme.' },
 ];
 
-export function ConfirmationPage({ leadData }: ConfirmationPageProps) {
+export function ConfirmationPage({ leadData, answers }: ConfirmationPageProps) {
+  const summary = generateSummary(answers);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -37,7 +41,23 @@ export function ConfirmationPage({ leadData }: ConfirmationPageProps) {
         Voici la suite du programme.
       </p>
 
-      <div className="mt-10 bg-card border border-border rounded-2xl p-7 text-left">
+      {/* Summary Box */}
+      <motion.div 
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+        className="mt-8 bg-card border border-primary/30 rounded-2xl p-6 text-left"
+      >
+        <h3 className="text-xs font-semibold text-primary mb-4 flex items-center gap-2 uppercase tracking-wider font-mono">
+          <Quote className="w-4 h-4" />
+          Ce qu'on a compris
+        </h3>
+        <p className="text-[15px] leading-relaxed text-foreground/90 italic">
+          "{summary}"
+        </p>
+      </motion.div>
+
+      <div className="mt-6 bg-card border border-border rounded-2xl p-7 text-left">
         <h3 className="text-sm font-semibold text-primary mb-5 flex items-center gap-2">
           <Clock className="w-[18px] h-[18px]" />
           Prochaines étapes
