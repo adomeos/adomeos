@@ -26,7 +26,7 @@ export function ConfirmationPage({ leadData, answers }: ConfirmationPageProps) {
     async function fetchAISummary() {
       try {
         const { data, error } = await supabase.functions.invoke('generate-summary', {
-          body: { answers },
+          body: { answers, leadData },
         });
 
         if (error) {
