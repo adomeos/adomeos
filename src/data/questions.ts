@@ -1,0 +1,210 @@
+import { Question } from '@/types/quiz';
+
+export const questions: Question[] = [
+  {
+    id: 2,
+    category: 'Ton fonctionnement',
+    text: 'Le matin, c\'est quoi ton premier réflexe ?',
+    type: 'single',
+    options: [
+      { letter: 'A', text: 'Je checke mon téléphone avant même de me lever. Mails, messages, markets...' },
+      { letter: 'B', text: 'J\'ai une routine stricte que je suis à la lettre. Pas le choix.' },
+      { letter: 'C', text: 'Ça dépend des jours. J\'ai pas vraiment de constance.' },
+      { letter: 'D', text: 'Je prends mon temps, tranquille. Pas de rush.' },
+    ],
+  },
+  {
+    id: 3,
+    category: 'Ton fonctionnement',
+    text: 'Quand t\'atteins un objectif, tu ressens quoi ?',
+    type: 'single',
+    options: [
+      { letter: 'A', text: 'Satisfaction 2 minutes, puis "c\'est quoi le prochain ?"' },
+      { letter: 'B', text: 'Je me dis que j\'aurais pu faire mieux. C\'est jamais assez.' },
+      { letter: 'C', text: 'Je ressens presque rien en fait. C\'est bizarre.' },
+      { letter: 'D', text: 'Vraie fierté. Je prends le temps de célébrer.' },
+    ],
+  },
+  {
+    id: 4,
+    category: 'Ton fonctionnement',
+    text: 'Les gens autour de toi diraient que tu es :',
+    type: 'single',
+    options: [
+      { letter: 'A', text: 'Impressionnant mais "trop intense"' },
+      { letter: 'B', text: 'Quelqu\'un qui en fait toujours trop' },
+      { letter: 'C', text: 'Difficile à suivre, toujours à 100 à l\'heure' },
+      { letter: 'D', text: 'Plutôt équilibré' },
+    ],
+  },
+  {
+    id: 5,
+    category: 'Ton corps',
+    text: 'Ton sommeil, honnêtement :',
+    type: 'single',
+    options: [
+      { letter: 'A', text: '4-5h et je me dis que c\'est suffisant. J\'ai pas besoin de plus.' },
+      { letter: 'B', text: 'Je dors, mais je me réveille fatigué. Comme si ça servait à rien.' },
+      { letter: 'C', text: 'Variable. Parfois 4h, parfois 9h. Jamais régulier.' },
+      { letter: 'D', text: '7-8h, plutôt stable. Je dors bien.' },
+    ],
+  },
+  {
+    id: 6,
+    category: 'Ton corps',
+    text: 'Ton rapport à la nourriture :',
+    type: 'single',
+    options: [
+      { letter: 'A', text: 'J\'oublie de manger. Ou je mange devant l\'écran sans m\'en rendre compte.' },
+      { letter: 'B', text: 'Je mange, mais c\'est du carburant. Pas du plaisir.' },
+      { letter: 'C', text: 'Cycles : régime strict, puis craquages. Je contrôle pas.' },
+      { letter: 'D', text: 'Équilibré. Je prends le temps de manger, j\'apprécie.' },
+    ],
+  },
+  {
+    id: 7,
+    category: 'Ta tête',
+    text: 'Quand t\'as une journée "off" sans obligations, tu fais quoi ?',
+    type: 'single',
+    options: [
+      { letter: 'A', text: 'Je trouve un truc à faire. Je m\'ennuie vite sinon.' },
+      { letter: 'B', text: 'Je travaille quand même. "Juste un peu."' },
+      { letter: 'C', text: 'Je suis mal. Je sais pas quoi faire de moi.' },
+      { letter: 'D', text: 'Je profite. Je fais ce qui me plaît, tranquille.' },
+    ],
+  },
+  {
+    id: 8,
+    category: 'Ta tête',
+    text: 'C\'est quoi ta voix intérieure dominante ?',
+    type: 'single',
+    options: [
+      { letter: 'A', text: '"T\'es pas assez bien. Fais plus."' },
+      { letter: 'B', text: '"Si tu relâches, tout va s\'effondrer."' },
+      { letter: 'C', text: '"Les autres y arrivent, pourquoi pas toi ?"' },
+      { letter: 'D', text: 'Plutôt bienveillante. Je suis cool avec moi-même.' },
+    ],
+  },
+  {
+    id: 9,
+    category: 'Ta tête',
+    text: 'Quand quelque chose va pas (perso ou pro), ta réaction :',
+    type: 'single',
+    options: [
+      { letter: 'A', text: 'Analyser, comprendre, résoudre. Tout seul.' },
+      { letter: 'B', text: 'M\'en vouloir. Ruminer. Me flageller mentalement.' },
+      { letter: 'C', text: 'Ignorer et avancer. Ça passera.' },
+      { letter: 'D', text: 'En parler à quelqu\'un. Prendre du recul.' },
+    ],
+  },
+  {
+    id: 10,
+    category: 'Ta tête',
+    text: 'Dernière fois que t\'as fait un truc juste pour le plaisir, sans objectif ?',
+    type: 'single',
+    options: [
+      { letter: 'A', text: 'Je sais plus. Ça fait longtemps.' },
+      { letter: 'B', text: 'Récemment, mais j\'ai culpabilisé après.' },
+      { letter: 'C', text: 'J\'ai du mal à voir ce qui me fait plaisir, en vrai.' },
+      { letter: 'D', text: 'Cette semaine. Je m\'accorde ça régulièrement.' },
+    ],
+  },
+  {
+    id: 11,
+    category: 'Ton état',
+    text: 'Sois honnête : t\'es à combien sur l\'échelle de l\'épuisement ?',
+    type: 'slider',
+    sliderMin: 1,
+    sliderMax: 10,
+    sliderMinLabel: '1 — En forme',
+    sliderMaxLabel: '10 — Au bord du burnout',
+  },
+  {
+    id: 12,
+    category: 'Ton état',
+    text: 'T\'as l\'impression de porter un masque au quotidien ?',
+    type: 'single',
+    options: [
+      { letter: 'A', text: 'Oui. Personne connaît vraiment ce qui se passe en moi.' },
+      { letter: 'B', text: 'Parfois. Ça dépend avec qui.' },
+      { letter: 'C', text: 'J\'ai même plus l\'impression de savoir qui je suis vraiment.' },
+      { letter: 'D', text: 'Non, je suis authentique. Ce qu\'on voit, c\'est moi.' },
+    ],
+  },
+  {
+    id: 13,
+    category: 'Ton état',
+    text: 'Cette phrase, elle te parle ?',
+    type: 'single',
+    options: [
+      { letter: 'A', text: 'Putain. C\'est exactement ça.' },
+      { letter: 'B', text: 'Ça me parle en partie, oui.' },
+      { letter: 'C', text: 'Pas vraiment.' },
+      { letter: 'D', text: 'Pas du tout. Je suis satisfait de ma vie.' },
+    ],
+  },
+  {
+    id: 14,
+    category: 'Ton parcours',
+    text: 'Qu\'est-ce que t\'as déjà essayé pour aller mieux ?',
+    type: 'checkbox',
+    options: [
+      { letter: '1', text: 'Thérapie / Psychologue' },
+      { letter: '2', text: 'Développement personnel (livres, vidéos, podcasts)' },
+      { letter: '3', text: 'Routines (méditation, douche froide, journaling...)' },
+      { letter: '4', text: 'Coaching' },
+      { letter: '5', text: 'Médicaments (antidépresseurs, anxiolytiques...)' },
+      { letter: '6', text: 'Sport intensif' },
+      { letter: '7', text: 'Rien. J\'essaie de gérer seul.' },
+    ],
+  },
+  {
+    id: 15,
+    category: 'Ton parcours',
+    text: 'Et ces solutions, ça a donné quoi ?',
+    type: 'single',
+    options: [
+      { letter: 'A', text: 'Ça a marché un temps, puis j\'ai rechuté. Comme toujours.' },
+      { letter: 'B', text: 'Ça m\'a pas vraiment aidé. Trop lent, trop superficiel.' },
+      { letter: 'C', text: 'Ça a un peu aidé, mais c\'est pas la solution.' },
+      { letter: 'D', text: 'Ça a vraiment marché pour moi.' },
+    ],
+  },
+  {
+    id: 16,
+    category: 'Ton déclic',
+    text: 'Si tu changes rien, tu te vois où dans 5 ans ?',
+    type: 'single',
+    options: [
+      { letter: 'A', text: 'Même situation, mais encore plus épuisé.' },
+      { letter: 'B', text: 'J\'ose pas y penser, ça me fait peur.' },
+      { letter: 'C', text: 'Probablement un burnout ou une rupture.' },
+      { letter: 'D', text: 'Ça ira, je gère.' },
+    ],
+  },
+  {
+    id: 17,
+    category: 'Ton déclic',
+    text: 'T\'es prêt à vraiment changer les choses ?',
+    type: 'single',
+    options: [
+      { letter: 'A', text: 'Oui. C\'est maintenant ou jamais.' },
+      { letter: 'B', text: 'Je crois, mais j\'ai peur de pas y arriver.' },
+      { letter: 'C', text: 'Je sais pas. Faut que je réfléchisse.' },
+      { letter: 'D', text: 'Pas vraiment. Je voulais juste voir.' },
+    ],
+  },
+];
+
+export const hookQuestion = {
+  label: 'Première question',
+  text: 'Si t\'es honnête avec toi-même, c\'est quoi ton rapport au repos ?',
+  options: [
+    { letter: 'A', text: 'Le repos c\'est pour les faibles. Je me reposerai quand je serai mort.' },
+    { letter: 'B', text: 'Je sais que je devrais me reposer, mais j\'y arrive pas. Y\'a toujours un truc à faire.' },
+    { letter: 'C', text: 'Je me repose, mais je culpabilise. Comme si j\'avais pas le droit.' },
+    { letter: 'D', text: 'Je me repose sans problème, tranquille.' },
+  ],
+};
+
+export const quoteForQuestion13 = '"J\'ai réussi à construire une vie qui, sur le papier, devrait me rendre heureux. Mais à l\'intérieur, je me sens vide."';
