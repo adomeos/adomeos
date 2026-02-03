@@ -43,11 +43,29 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
     phone: '',
   });
 
+  const normalizePhone = (phone: string): string => {
+    // Retire les espaces et caractères non numériques
+    let cleaned = phone.replace(/\D/g, '');
+    // Si commence par 0, on le retire (car +33 est déjà affiché)
+    if (cleaned.startsWith('0')) {
+      cleaned = cleaned.substring(1);
+    }
+    return cleaned;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.firstName && formData.email && formData.phone) {
-      onSubmit(formData);
+    const normalizedPhone = normalizePhone(formData.phone);
+    // Vérifie que le numéro a 9 chiffres (sans le 0)
+    if (formData.firstName && formData.email && normalizedPhone.length === 9) {
+      onSubmit({ ...formData, phone: normalizedPhone });
     }
+  };
+
+  const handlePhoneChange = (value: string) => {
+    // Permet uniquement les chiffres et espaces
+    const cleaned = value.replace(/[^\d\s]/g, '');
+    setFormData({ ...formData, phone: cleaned });
   };
 
   return (
@@ -150,11 +168,14 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
               type="tel"
               placeholder="6 12 34 56 78"
               value={formData.phone}
-              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              onChange={(e) => handlePhoneChange(e.target.value)}
               className="h-14 text-base bg-card border-border rounded-xl px-[18px] placeholder:text-muted-foreground focus:border-primary focus:bg-hover"
               required
             />
           </div>
+          {formData.phone && normalizePhone(formData.phone).length !== 9 && (
+            <p className="text-sm text-destructive mt-1">Numéro invalide (9 chiffres après +33)</p>
+          )}
         </div>
 
         <Button
