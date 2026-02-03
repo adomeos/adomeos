@@ -5,7 +5,7 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const SYSTEM_PROMPT = `Tu es un expert en accompagnement d'entrepreneurs et investisseurs à haute performance. Tu analyses les réponses d'un test pour identifier les patterns profonds.
+const ANALYSIS_PROMPT = `Tu es un expert en accompagnement d'entrepreneurs et investisseurs à haute performance. Tu analyses les réponses d'un test pour identifier les patterns profonds.
 
 CONTEXTE : Tu parles à des entrepreneurs, traders, freelances — des mecs qui tournent à 200%, perfectionnistes, souvent HPI/TDAH, qui ont "réussi" sur le papier mais ressentent un vide. Ils ont déjà essayé thérapie, dev perso, routines militaires — rien n'a tenu.
 
@@ -26,6 +26,23 @@ RÈGLES STRICTES :
 - Pas de conclusion type "N'hésite pas"
 - Sois direct et cash, tutoie
 - Base-toi UNIQUEMENT sur ses réponses`;
+
+const SUMMARY_PROMPT = `Tu es un coach spécialisé dans l'accompagnement des hauts performeurs en épuisement.
+
+Tu viens de recevoir les réponses complètes d'une personne au diagnostic ADOMEOS.
+Ton rôle : générer un résumé empathique qui montre que tu as VRAIMENT compris sa situation.
+
+RÈGLES STRICTES :
+- Maximum 600 caractères
+- Tutoiement obligatoire
+- Ton direct mais bienveillant, comme un ami qui dit les vérités
+- Phrases courtes et percutantes
+- Fais référence à des éléments SPÉCIFIQUES de ses réponses
+- Pas de jugement, juste de la compréhension
+- Si la personne est prête à changer, termine sur une note d'espoir
+- Commence directement par le contenu, pas de "Voici ton résumé"
+
+IMPORTANT : Chaque résumé doit être UNIQUE basé sur la combinaison exacte des réponses.`;
 
 const questionLabels: Record<number, string> = {
   1: "Rapport au repos",
@@ -60,8 +77,32 @@ function formatAnswersForPrompt(answers: Record<string, any>): string {
   return formatted;
 }
 
+async function callClaude(systemPrompt: string, userContent: string, apiKey: string): Promise<string> {
+  const response = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": apiKey,
+      "anthropic-version": "2023-06-01"
+    },
+    body: JSON.stringify({
+      model: "claude-sonnet-4-20250514",
+      max_tokens: 500,
+      system: systemPrompt,
+      messages: [{ role: "user", content: userContent }]
+    })
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Claude API error: ${response.status} - ${errorText}`);
+  }
+
+  const data = await response.json();
+  return data.content[0].text;
+}
+
 serve(async (req) => {
-  // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
   }
@@ -79,43 +120,20 @@ serve(async (req) => {
       throw new Error("CLAUDE_API_KEY is not configured");
     }
 
-    // 1. Format answers for Claude
     const formattedAnswers = formatAnswersForPrompt(answers);
     console.log("Formatted answers for Claude");
 
-    // 2. Call Claude API
-    console.log("Calling Claude API...");
-    const claudeResponse = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": CLAUDE_API_KEY,
-        "anthropic-version": "2023-06-01"
-      },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 500,
-        system: SYSTEM_PROMPT,
-        messages: [
-          {
-            role: "user",
-            content: formattedAnswers
-          }
-        ]
-      })
-    });
-
-    if (!claudeResponse.ok) {
-      const errorText = await claudeResponse.text();
-      console.error("Claude API error:", claudeResponse.status, errorText);
-      throw new Error(`Claude API error: ${claudeResponse.status}`);
-    }
-
-    const claudeData = await claudeResponse.json();
-    const analysis = claudeData.content[0].text;
+    // 1. Generate analysis with Claude
+    console.log("Generating analysis...");
+    const analysis = await callClaude(ANALYSIS_PROMPT, formattedAnswers, CLAUDE_API_KEY);
     console.log("Analysis generated successfully");
 
-    // 3. Send to GHL webhook
+    // 2. Generate summary with Claude
+    console.log("Generating summary...");
+    const summary = await callClaude(SUMMARY_PROMPT, formattedAnswers, CLAUDE_API_KEY);
+    console.log("Summary generated successfully");
+
+    // 3. Send everything to GHL webhook
     if (GHL_WEBHOOK_URL) {
       console.log("Sending to GHL webhook...");
       const ghlResponse = await fetch(GHL_WEBHOOK_URL, {
@@ -128,6 +146,7 @@ serve(async (req) => {
           email,
           phone,
           analysis,
+          summary,
           answers: JSON.stringify(answers),
           source: "test-adomeos",
           timestamp: new Date().toISOString()
@@ -137,14 +156,14 @@ serve(async (req) => {
       if (!ghlResponse.ok) {
         console.error("GHL webhook error:", ghlResponse.status);
       } else {
-        console.log("Successfully sent to GHL");
+        console.log("Successfully sent to GHL (with summary)");
       }
     } else {
       console.warn("GHL_WEBHOOK_URL not configured, skipping webhook");
     }
 
     return new Response(
-      JSON.stringify({ success: true, analysis }),
+      JSON.stringify({ success: true, analysis, summary }),
       { 
         headers: { ...corsHeaders, "Content-Type": "application/json" },
         status: 200 
