@@ -45,7 +45,7 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.firstName && formData.email) {
+    if (formData.firstName && formData.email && formData.phone) {
       onSubmit(formData);
     }
   };
@@ -152,6 +152,7 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               className="h-14 text-base bg-card border-border rounded-xl px-[18px] placeholder:text-muted-foreground focus:border-primary focus:bg-hover"
+              required
             />
           </div>
         </div>
