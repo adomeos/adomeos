@@ -12,7 +12,7 @@ interface CapturePageProps {
 const resultItems = [
   { icon: Target, text: 'Un état des lieux de ce qui se passe vraiment en toi' },
   { icon: Brain, text: 'Les schémas qui t\'empêchent d\'avancer' },
-  { icon: Shield, text: 'Les solutions concrètes pour sortir du cycle' },
+  { icon: Shield, text: 'Les solutions concrètes pour sortir de ce cercle vicieux' },
 ];
 
 export function CapturePage({ onSubmit }: CapturePageProps) {
@@ -44,7 +44,7 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
       </h1>
 
       <p className="mt-4 text-lg text-muted-foreground leading-relaxed max-w-[480px] mx-auto">
-        On a analysé tes réponses. Laisse-nous tes coordonnées pour recevoir ton diagnostic personnalisé.
+        On a analysé tes réponses. Laisse tes coordonnées et tu recevras ton analyse personnalisée dans l'heure.
       </p>
 
       <div className="mt-10 bg-card border border-border rounded-2xl p-7 text-left">
