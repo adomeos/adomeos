@@ -63,11 +63,11 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
         </h3>
         
         <p className="text-[15px] leading-relaxed mb-4">
-          J'ai créé ce test pour un profil très précis : <strong>les entrepreneurs, traders, freelances</strong> — les mecs qui tournent à 200% en permanence, qui ont "réussi" sur le papier mais qui sentent que quelque chose cloche à l'intérieur.
+          J'ai créé ce test pour un profil très précis : <strong>les entrepreneurs et investisseurs</strong>. Les mecs qui tournent à 200% en permanence, qui ont "réussi" sur le papier mais qui sentent que quelque chose cloche à l'intérieur.
         </p>
         
         <p className="text-[15px] leading-relaxed text-muted-foreground mb-4">
-          Si t'as reconnu des trucs que t'as jamais dit à personne — des patterns que t'observes depuis des années sans réussir à les changer — <strong className="text-foreground">c'est que t'es au bon endroit.</strong>
+          Si t'as reconnu des trucs que t'as jamais dit à personne. Des patterns que t'observes depuis des années sans réussir à les changer. <strong className="text-foreground">C'est que t'es au bon endroit.</strong>
         </p>
         
         <p className="text-[15px] leading-relaxed text-muted-foreground">
@@ -94,7 +94,7 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
             <item.icon className={`w-5 h-5 ${item.iconColor} flex-shrink-0 mt-0.5`} />
             <div>
               <span className="font-semibold">{item.title}</span>
-              <span className="text-muted-foreground"> — {item.text}</span>
+              <span className="text-muted-foreground"> {item.text}</span>
             </div>
           </div>
         ))}
@@ -104,7 +104,7 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
       <div className="bg-accent-dim border border-primary/30 rounded-2xl p-5 mb-8 flex items-start gap-3.5">
         <Handshake className="w-6 h-6 text-yellow-500 flex-shrink-0" />
         <p className="text-[15px] leading-relaxed">
-          <strong>Bonus :</strong> On bosse qu'avec des entrepreneurs et investisseurs. Si ça matche, tu pourras accéder à un réseau de mecs solides qui s'entraident.
+          <strong>Bonus :</strong> On bosse qu'avec des entrepreneurs et investisseurs. Si ça matche, tu pourras accéder à un réseau de mecs solides.
         </p>
       </div>
 
