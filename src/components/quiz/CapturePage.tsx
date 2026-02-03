@@ -94,7 +94,7 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
 
         <div>
           <label className="block text-sm font-medium text-muted-foreground mb-2">
-            Téléphone (optionnel)
+            Téléphone
           </label>
           <div className="flex gap-3">
             <div className="w-20 h-14 bg-card border border-border rounded-xl flex items-center justify-center text-muted-foreground flex-shrink-0">
