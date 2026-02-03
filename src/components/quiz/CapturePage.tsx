@@ -12,7 +12,7 @@ interface CapturePageProps {
 const resultItems = [
   { icon: Target, text: 'Un état des lieux de ce qui se passe vraiment en toi' },
   { icon: Brain, text: 'Les schémas qui t\'empêchent d\'avancer' },
-  { icon: Shield, text: 'Des pistes concrètes pour sortir du cycle' },
+  { icon: Shield, text: 'Les solutions concrètes pour sortir du cycle' },
 ];
 
 export function CapturePage({ onSubmit }: CapturePageProps) {
