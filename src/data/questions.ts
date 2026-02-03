@@ -31,8 +31,8 @@ export const questions: Question[] = [
     text: 'Les gens autour de toi diraient que tu es :',
     type: 'single',
     options: [
-      { letter: 'A', text: 'Impressionnant mais "trop intense"' },
-      { letter: 'B', text: 'Quelqu\'un qui en fait toujours trop' },
+      { letter: 'A', text: 'Impressionnant mais épuisant' },
+      { letter: 'B', text: 'Quelqu\'un qui se met trop de pression' },
       { letter: 'C', text: 'Difficile à suivre, toujours à 100 à l\'heure' },
       { letter: 'D', text: 'Plutôt équilibré' },
     ],
@@ -43,8 +43,8 @@ export const questions: Question[] = [
     text: 'Ton sommeil, honnêtement :',
     type: 'single',
     options: [
-      { letter: 'A', text: '4-5h et je me dis que c\'est suffisant. J\'ai pas besoin de plus.' },
-      { letter: 'B', text: 'Je dors, mais je me réveille fatigué. Comme si ça servait à rien.' },
+      { letter: 'A', text: 'Entre 4 et 6h et je me dis que c\'est suffisant. J\'ai pas besoin de plus.' },
+      { letter: 'B', text: 'Je dors suffisamment, mais je me réveille encore fatigué.' },
       { letter: 'C', text: 'Variable. Parfois 4h, parfois 9h. Jamais régulier.' },
       { letter: 'D', text: '7-8h, plutôt stable. Je dors bien.' },
     ],
@@ -57,7 +57,7 @@ export const questions: Question[] = [
     options: [
       { letter: 'A', text: 'J\'oublie de manger. Ou je mange devant l\'écran sans m\'en rendre compte.' },
       { letter: 'B', text: 'Je mange, mais c\'est du carburant. Pas du plaisir.' },
-      { letter: 'C', text: 'Cycles : régime strict, puis craquages. Je contrôle pas.' },
+      { letter: 'C', text: 'J\'ai des cycles : régime strict, puis craquages. Je contrôle pas.' },
       { letter: 'D', text: 'Équilibré. Je prends le temps de manger, j\'apprécie.' },
     ],
   },
@@ -67,9 +67,9 @@ export const questions: Question[] = [
     text: 'Quand t\'as une journée "off" sans obligations, tu fais quoi ?',
     type: 'single',
     options: [
-      { letter: 'A', text: 'Je trouve un truc à faire. Je m\'ennuie vite sinon.' },
+      { letter: 'A', text: 'Je trouve un truc à faire pour pas culpabiliser.' },
       { letter: 'B', text: 'Je travaille quand même. "Juste un peu."' },
-      { letter: 'C', text: 'Je suis mal. Je sais pas quoi faire de moi.' },
+      { letter: 'C', text: 'Je m\'occupe. Sinon je me sens mal.' },
       { letter: 'D', text: 'Je profite. Je fais ce qui me plaît, tranquille.' },
     ],
   },
@@ -91,7 +91,7 @@ export const questions: Question[] = [
     text: 'Quand quelque chose va pas (perso ou pro), ta réaction :',
     type: 'single',
     options: [
-      { letter: 'A', text: 'Analyser, comprendre, résoudre. Tout seul.' },
+      { letter: 'A', text: 'Analyser, comprendre, résoudre, tout seul.' },
       { letter: 'B', text: 'M\'en vouloir. Ruminer. Me flageller mentalement.' },
       { letter: 'C', text: 'Ignorer et avancer. Ça passera.' },
       { letter: 'D', text: 'En parler à quelqu\'un. Prendre du recul.' },
@@ -103,7 +103,7 @@ export const questions: Question[] = [
     text: 'Dernière fois que t\'as fait un truc juste pour le plaisir, sans objectif ?',
     type: 'single',
     options: [
-      { letter: 'A', text: 'Je sais plus. Ça fait longtemps.' },
+      { letter: 'A', text: 'Je sais plus. Ça fait longtemps, la dernière fois.' },
       { letter: 'B', text: 'Récemment, mais j\'ai culpabilisé après.' },
       { letter: 'C', text: 'J\'ai du mal à voir ce qui me fait plaisir, en vrai.' },
       { letter: 'D', text: 'Cette semaine. Je m\'accorde ça régulièrement.' },
@@ -112,7 +112,7 @@ export const questions: Question[] = [
   {
     id: 11,
     category: 'Ton état',
-    text: 'Sois honnête : t\'es à combien sur l\'échelle de l\'épuisement ?',
+    text: 'Sois honnête : t\'es à combien sur l\'échelle de l\'épuisement ? (C\'est ton ressenti, y\'a pas de bonne ou mauvaise réponse)',
     type: 'slider',
     sliderMin: 1,
     sliderMax: 10,
@@ -164,8 +164,8 @@ export const questions: Question[] = [
     text: 'Et ces solutions, ça a donné quoi ?',
     type: 'single',
     options: [
-      { letter: 'A', text: 'Ça a marché un temps, puis j\'ai rechuté. Comme toujours.' },
-      { letter: 'B', text: 'Ça m\'a pas vraiment aidé. Trop lent, trop superficiel.' },
+      { letter: 'A', text: 'Ça a marché un temps, puis je suis retombé dans mes travers.' },
+      { letter: 'B', text: 'Toujours plus de méthodes, toujours mieux faire, mais ça va pas mieux.' },
       { letter: 'C', text: 'Ça a un peu aidé, mais c\'est pas la solution.' },
       { letter: 'D', text: 'Ça a vraiment marché pour moi.' },
     ],
