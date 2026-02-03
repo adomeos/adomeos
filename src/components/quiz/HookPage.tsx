@@ -23,7 +23,7 @@ export function HookPage({ onStart }: HookPageProps) {
       </h1>
 
       <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-[520px] mx-auto">
-        Ce diagnostic va te montrer ce que tu refuses de voir — et pourquoi tout ce que t'as essayé n'a pas marché.
+        Ce diagnostic va te montrer ce que tu refuses de voir et pourquoi tout ce que t'as essayé n'a pas marché.
       </p>
 
       <div className="mt-12 bg-card border border-border rounded-2xl p-8 text-left">
