@@ -10,7 +10,7 @@ interface CapturePageProps {
 }
 
 const resultItems = [
-  { icon: Target, text: 'Ton profil de performance et ses angles morts' },
+  { icon: Target, text: 'Un état des lieux de ce qui se passe vraiment en toi' },
   { icon: Brain, text: 'Les schémas qui t\'empêchent d\'avancer' },
   { icon: Shield, text: 'Des pistes concrètes pour sortir du cycle' },
 ];
@@ -40,7 +40,7 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
       </div>
 
       <h1 className="text-3xl md:text-4xl font-bold leading-tight">
-        Ton analyse est prête.
+        Tes résultats sont prêts.
       </h1>
 
       <p className="mt-4 text-lg text-muted-foreground leading-relaxed max-w-[480px] mx-auto">
