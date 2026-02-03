@@ -15,7 +15,7 @@ export function HookPage({ onStart }: HookPageProps) {
       animate={{ opacity: 1, y: 0 }}
       className="flex flex-col justify-center text-center min-h-[calc(100vh-80px)] pt-16"
     >
-      <Badge>Diagnostic en 3 min</Badge>
+      <Badge>Test en 3 min</Badge>
 
       <h1 className="mt-8 text-4xl md:text-5xl font-bold leading-tight tracking-tight">
         Tu performes.<br />
