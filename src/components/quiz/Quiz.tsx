@@ -50,8 +50,6 @@ export function Quiz() {
           <ConfirmationPage 
             key="confirmation" 
             leadData={leadData} 
-            answers={answers}
-            analysisResult={analysisResult}
           />
         )}
       </AnimatePresence>
