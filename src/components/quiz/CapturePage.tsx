@@ -40,11 +40,11 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
       </div>
 
       <h1 className="text-3xl md:text-4xl font-bold leading-tight">
-        Tes résultats sont prêts.
+        Tes résultats sont bientôt prêts.
       </h1>
 
       <p className="mt-4 text-lg text-muted-foreground leading-relaxed max-w-[480px] mx-auto">
-        On a analysé tes réponses. Laisse tes coordonnées et tu recevras ton analyse personnalisée dans l'heure.
+        On va analyser tes réponses et tu recevras dans l'heure une analyse personnalisée.
       </p>
 
       <div className="mt-10 bg-card border border-border rounded-2xl p-7 text-left">
