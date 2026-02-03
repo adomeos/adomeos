@@ -171,20 +171,6 @@ export const questions: Question[] = [
     ],
   },
   {
-    id: 18,
-    category: 'Ton profil',
-    text: 'C\'est quoi ton activité principale ?',
-    type: 'single',
-    options: [
-      { letter: 'A', text: 'Entrepreneur / Chef d\'entreprise' },
-      { letter: 'B', text: 'Trader / Investisseur' },
-      { letter: 'C', text: 'Freelance / Indépendant' },
-      { letter: 'D', text: 'Salarié cadre / Manager' },
-      { letter: 'E', text: 'Créateur de contenu' },
-      { letter: 'F', text: 'Autre' },
-    ],
-  },
-  {
     id: 16,
     category: 'Ton déclic',
     text: 'Si tu changes rien, tu te vois où dans 5 ans ?',
