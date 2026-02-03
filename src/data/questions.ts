@@ -26,6 +26,18 @@ export const questions: Question[] = [
     ],
   },
   {
+    id: 13,
+    category: 'Ton état',
+    text: 'Cette phrase, elle te parle ?',
+    type: 'single',
+    options: [
+      { letter: 'A', text: 'Putain. C\'est exactement ça.' },
+      { letter: 'B', text: 'Ça me parle en partie, oui.' },
+      { letter: 'C', text: 'Pas vraiment.' },
+      { letter: 'D', text: 'Pas du tout. Je suis satisfait de ma vie.' },
+    ],
+  },
+  {
     id: 4,
     category: 'Ton fonctionnement',
     text: 'Les gens autour de toi diraient que tu es :',
@@ -116,8 +128,8 @@ export const questions: Question[] = [
     type: 'slider',
     sliderMin: 1,
     sliderMax: 10,
-    sliderMinLabel: '1 — En forme',
-    sliderMaxLabel: '10 — Au bord du burnout',
+    sliderMinLabel: '1 = En forme',
+    sliderMaxLabel: '10 = Au bord du burnout',
   },
   {
     id: 12,
@@ -129,18 +141,6 @@ export const questions: Question[] = [
       { letter: 'B', text: 'Parfois. Ça dépend avec qui.' },
       { letter: 'C', text: 'J\'ai même plus l\'impression de savoir qui je suis vraiment.' },
       { letter: 'D', text: 'Non, je suis authentique. Ce qu\'on voit, c\'est moi.' },
-    ],
-  },
-  {
-    id: 13,
-    category: 'Ton état',
-    text: 'Cette phrase, elle te parle ?',
-    type: 'single',
-    options: [
-      { letter: 'A', text: 'Putain. C\'est exactement ça.' },
-      { letter: 'B', text: 'Ça me parle en partie, oui.' },
-      { letter: 'C', text: 'Pas vraiment.' },
-      { letter: 'D', text: 'Pas du tout. Je suis satisfait de ma vie.' },
     ],
   },
   {
