@@ -20,13 +20,26 @@ const steps = [
 
 export function ConfirmationPage({ leadData, answers }: ConfirmationPageProps) {
   const [summary, setSummary] = useState<string>('');
+  const [analysis, setAnalysis] = useState<string>('');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchAISummary() {
+    async function processSubmission() {
       try {
-        const { data, error } = await supabase.functions.invoke('generate-summary', {
-          body: { answers, leadData },
+        // Convert answers array to object format for the edge function
+        const answersObject: Record<number, string | number | string[]> = {};
+        answers.forEach(answer => {
+          answersObject[answer.questionId] = answer.value;
+        });
+
+        // Call generate-analysis edge function
+        const { data, error } = await supabase.functions.invoke('generate-analysis', {
+          body: { 
+            firstname: leadData.firstName,
+            email: leadData.email,
+            phone: leadData.phone,
+            answers: answersObject
+          },
         });
 
         if (error) {
@@ -34,32 +47,33 @@ export function ConfirmationPage({ leadData, answers }: ConfirmationPageProps) {
           throw error;
         }
 
-        if (data?.summary) {
-          setSummary(data.summary);
+        if (data?.success && data?.analysis) {
+          setAnalysis(data.analysis);
+          // Use the first paragraph as summary for the confirmation page
+          const firstParagraph = data.analysis.split('\n\n')[0] || data.analysis.slice(0, 200);
+          setSummary(firstParagraph);
         } else {
-          throw new Error('No summary returned');
+          throw new Error(data?.error || 'No analysis returned');
         }
       } catch (err) {
-        console.error('Failed to generate AI summary, using fallback:', err);
+        console.error('Failed to generate analysis, using fallback:', err);
         // Fallback to rule-based summary
         const fallbackSummary = generateSummary(answers);
         setSummary(fallbackSummary);
         
-        // Show toast only for rate limit or payment errors
-        if (err instanceof Error && (err.message.includes('429') || err.message.includes('402'))) {
-          toast({
-            title: "Résumé simplifié",
-            description: "Le résumé IA n'est pas disponible pour le moment.",
-            variant: "default",
-          });
-        }
+        // Show toast for errors
+        toast({
+          title: "Analyse simplifiée",
+          description: "L'analyse IA n'est pas disponible pour le moment.",
+          variant: "default",
+        });
       } finally {
         setIsLoading(false);
       }
     }
 
-    fetchAISummary();
-  }, [answers]);
+    processSubmission();
+  }, [answers, leadData]);
 
   return (
     <motion.div
