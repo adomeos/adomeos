@@ -4,6 +4,7 @@ import { HookPage } from './HookPage';
 import { QuestionPage } from './QuestionPage';
 import { CapturePage } from './CapturePage';
 import { ConfirmationPage } from './ConfirmationPage';
+import { LoadingPage } from './LoadingPage';
 
 export function Quiz() {
   const {
@@ -14,6 +15,8 @@ export function Quiz() {
     leadData,
     progress,
     totalQuestions,
+    analysisResult,
+    isSubmitting,
     startQuiz,
     answerQuestion,
     submitLead,
@@ -35,10 +38,21 @@ export function Quiz() {
           />
         )}
         
-        {step === 'capture' && <CapturePage key="capture" onSubmit={submitLead} />}
+        {step === 'capture' && (
+          isSubmitting ? (
+            <LoadingPage key="loading" />
+          ) : (
+            <CapturePage key="capture" onSubmit={submitLead} />
+          )
+        )}
         
         {step === 'confirmation' && leadData && (
-          <ConfirmationPage key="confirmation" leadData={leadData} answers={answers} />
+          <ConfirmationPage 
+            key="confirmation" 
+            leadData={leadData} 
+            answers={answers}
+            analysisResult={analysisResult}
+          />
         )}
       </AnimatePresence>
     </div>
