@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { AlertCircle, Layers, Zap, Check, Handshake, Lock } from 'lucide-react';
+import { AlertCircle, Layers, Zap, Check, Handshake, Lock, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { LeadFormData } from '@/types/quiz';
@@ -37,6 +37,7 @@ const resultItems = [
 ];
 
 export function CapturePage({ onSubmit }: CapturePageProps) {
+  const [countryCode, setCountryCode] = useState('+33');
   const [formData, setFormData] = useState<LeadFormData>({
     firstName: '',
     email: '',
@@ -161,8 +162,24 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
             Ton WhatsApp
           </label>
           <div className="flex gap-3">
-            <div className="w-20 h-14 bg-card border border-border rounded-xl flex items-center justify-center text-muted-foreground flex-shrink-0">
-              +33
+            <div className="relative">
+              <select
+                value={countryCode}
+                onChange={(e) => setCountryCode(e.target.value)}
+                className="h-14 w-24 bg-card border border-border rounded-xl px-3 pr-7 text-base appearance-none cursor-pointer focus:border-primary focus:outline-none transition-colors"
+              >
+                <option value="+33">🇫🇷 +33</option>
+                <option value="+32">🇧🇪 +32</option>
+                <option value="+41">🇨🇭 +41</option>
+                <option value="+44">🇬🇧 +44</option>
+                <option value="+1">🇺🇸 +1</option>
+                <option value="+212">🇲🇦 +212</option>
+                <option value="+216">🇹🇳 +216</option>
+                <option value="+213">🇩🇿 +213</option>
+                <option value="+352">🇱🇺 +352</option>
+                <option value="+377">🇲🇨 +377</option>
+              </select>
+              <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
             </div>
             <Input
               type="tel"
@@ -174,7 +191,7 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
             />
           </div>
           {formData.phone && normalizePhone(formData.phone).length !== 9 && (
-            <p className="text-sm text-destructive mt-1">Numéro invalide (9 chiffres après +33)</p>
+            <p className="text-sm text-destructive mt-1">Numéro invalide (9 chiffres après l'indicatif)</p>
           )}
         </div>
 
