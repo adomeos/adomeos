@@ -45,9 +45,7 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
   });
 
   const normalizePhone = (phone: string): string => {
-    // Retire les espaces et caractères non numériques
     let cleaned = phone.replace(/\D/g, '');
-    // Si commence par 0, on le retire (car +33 est déjà affiché)
     if (cleaned.startsWith('0')) {
       cleaned = cleaned.substring(1);
     }
@@ -57,14 +55,12 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const normalizedPhone = normalizePhone(formData.phone);
-    // Vérifie que le numéro a 9 chiffres (sans le 0)
     if (formData.firstName && formData.email && normalizedPhone.length === 9) {
       onSubmit({ ...formData, phone: normalizedPhone });
     }
   };
 
   const handlePhoneChange = (value: string) => {
-    // Permet uniquement les chiffres et espaces
     const cleaned = value.replace(/[^\d\s]/g, '');
     setFormData({ ...formData, phone: cleaned });
   };
@@ -81,7 +77,9 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
           Avant de continuer
         </h3>
         
-        <p className="text-[15px] leading-relaxed mb-4">J'ai créé ce test pour Ceux qui carburent à 100% en permanence, qui ont "réussi" sur le papier mais qui sentent que quelque chose ne va pas à l'intérieur.
+        <p className="text-[15px] leading-relaxed mb-4">
+          J'ai créé ce test pour Ceux qui carburent à 100% en permanence, qui ont "réussi" sur le papier mais qui sentent que quelque chose ne va pas à l'intérieur.
+          <br /><br />
           <strong>ceux qui carburent à 100% en permanence</strong>, qui ont "réussi" sur le papier mais qui sentent que quelque chose ne va pas à l'intérieur.
         </p>
         
@@ -140,7 +138,6 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
             onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
             className="h-14 text-base bg-card border-border rounded-xl px-[18px] placeholder:text-muted-foreground focus:border-primary focus:bg-hover"
             required />
-
         </div>
 
         <div>
@@ -154,7 +151,6 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             className="h-14 text-base bg-card border-border rounded-xl px-[18px] placeholder:text-muted-foreground focus:border-primary focus:bg-hover"
             required />
-
         </div>
 
         <div>
@@ -180,7 +176,6 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
               onChange={(e) => handlePhoneChange(e.target.value)}
               className="h-14 text-base bg-card border-border rounded-xl px-[18px] placeholder:text-muted-foreground focus:border-primary focus:bg-hover"
               required />
-
           </div>
           {formData.phone && normalizePhone(formData.phone).length !== 9 &&
           <p className="text-sm text-destructive mt-1">Numéro invalide (9 chiffres après l'indicatif)</p>
