@@ -112,7 +112,7 @@ export const questions: Question[] = [
   {
     id: 10,
     category: 'Ta tête',
-    text: 'Dernière fois que t\'as fait un truc juste pour le plaisir, sans objectif ?',
+    text: 'La dernière fois que t\'as fait un truc juste pour le plaisir, sans objectif ?',
     type: 'single',
     options: [
       { letter: 'A', text: 'Je sais plus. Ça fait longtemps, la dernière fois.' },
