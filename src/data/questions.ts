@@ -191,7 +191,7 @@ export const questions: Question[] = [
       { letter: 'A', text: 'Oui. C\'est maintenant ou jamais.' },
       { letter: 'B', text: 'Je crois, mais j\'ai peur de pas y arriver.' },
       { letter: 'C', text: 'Je sais pas. Faut que je réfléchisse.' },
-      { letter: 'D', text: 'Pas vraiment. Je voulais juste voir.' },
+      { letter: 'D', text: 'Pas vraiment. Je suis là par curiosité.' },
     ],
   },
 ];
