@@ -67,7 +67,7 @@ export const questions: Question[] = [
     text: 'Ton rapport à la nourriture :',
     type: 'single',
     options: [
-      { letter: 'A', text: 'J\'oublie de manger. Ou je mange devant l\'écran sans m\'en rendre compte.' },
+      { letter: 'A', text: 'J\'oublie de manger ou je mange devant l\'écran sans m\'en rendre compte.' },
       { letter: 'B', text: 'J\'oublie de manger ou je mange devant l\'écran sans m\'en rendre compte.' },
       { letter: 'C', text: 'J\'ai des cycles : régime strict, puis craquages. Je contrôle pas.' },
       { letter: 'D', text: 'Équilibré. Je prends le temps de manger, j\'apprécie.' },
