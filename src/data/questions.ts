@@ -165,7 +165,7 @@ export const questions: Question[] = [
     type: 'single',
     options: [
       { letter: 'A', text: 'Ça a marché un temps, puis je suis retombé dans mes travers.' },
-      { letter: 'B', text: 'Toujours plus de méthodes, toujours faire plus, mais ça va pas mieux.' },
+      { letter: 'B', text: 'J\'ai essayé de toujours faire plus, d\'accumuler les routines et les méthodes, mais ça va pas mieux.' },
       { letter: 'C', text: 'Ça m\'a aidé un peu, mais je crois que c\'est pas la solution.' },
       { letter: 'D', text: 'Ça a vraiment marché pour moi.' },
     ],
