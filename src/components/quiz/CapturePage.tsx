@@ -13,7 +13,7 @@ const resultItems = [
   { 
     icon: AlertCircle, 
     title: 'Ton angle mort',
-    text: 'Le truc que tu vois pas, qui sabote tout, et qui explique pourquoi ça rechute à chaque fois.',
+    text: 'Le truc que tu vois pas, qui sabote tout et qui explique pourquoi tu rechute à chaque fois.',
     iconColor: 'text-primary'
   },
   { 
