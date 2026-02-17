@@ -16,7 +16,7 @@ export const questions: Question[] = [
   {
     id: 3,
     category: 'Ton fonctionnement',
-    text: 'Quand t\'atteins un objectif, tu ressens quoi ?',
+    text: 'Quand tu atteins un objectif, tu ressens quoi ?',
     type: 'single',
     options: [
       { letter: 'A', text: 'Satisfaction 2 minutes, puis "c\'est quoi le prochain ?"' },
