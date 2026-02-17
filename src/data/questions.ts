@@ -137,7 +137,7 @@ export const questions: Question[] = [
     text: 'T\'as l\'impression de porter un masque au quotidien ?',
     type: 'single',
     options: [
-      { letter: 'A', text: 'Oui. Personne connaît vraiment ce qui se passe en moi.' },
+      { letter: 'A', text: 'Oui, personne ne sait vraiment ce qui se passe en moi.' },
       { letter: 'B', text: 'Parfois. Ça dépend avec qui.' },
       { letter: 'C', text: 'J\'ai même plus l\'impression de savoir qui je suis vraiment.' },
       { letter: 'D', text: 'Non, je suis authentique. Ce qu\'on voit, c\'est moi.' },
