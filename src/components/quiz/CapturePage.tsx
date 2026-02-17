@@ -90,7 +90,7 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
         </p>
         
         <p className="text-[15px] leading-relaxed text-muted-foreground">
-          Ceux qui ont l'impression que personne ne peut vraiment les aider parce qu'ils sont "trop dans leur tête" ou trop différents.    
+          Ceux qui ont l'impression que personne ne peut vraiment les aider parce qu'ils sont trop différents, qu'ils ont tout essayé ou parce que "on est jamais mieux servi que par soi-même"
         </p>
       </div>
 
