@@ -123,7 +123,7 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
       <div className="bg-accent-dim border border-primary/30 rounded-2xl p-5 mb-8 flex items-start gap-3.5">
         <Handshake className="w-6 h-6 text-yellow-500 flex-shrink-0" />
         <p className="text-[15px] leading-relaxed">
-          <strong>Bonus :</strong> On bosse qu'avec des entrepreneurs et investisseurs. Si ça matche, tu pourras accéder à un réseau de mecs solides.
+          <strong>Bonus :</strong> On bosse avec beaucoup d'entrepreneurs & investisseurs. Si ça match, tu accédera aussi à un réseau de gens sérieux.
         </p>
       </div>
 
