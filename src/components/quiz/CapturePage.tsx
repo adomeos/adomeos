@@ -82,7 +82,7 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
         </h3>
         
         <p className="text-[15px] leading-relaxed mb-4">
-          J'ai créé ce test pour un profil très précis : <strong>les entrepreneurs et investisseurs</strong>. Les mecs qui tournent à 200% en permanence, qui ont "réussi" sur le papier mais qui sentent que quelque chose cloche à l'intérieur.
+          J'ai créé ce test pour un profil précis : <strong>Ceux qui carburent à 100% en permanence</strong>, qui ont "réussi" sur le papier mais qui sentent que quelque chose ne va pas à l'intérieur.
         </p>
         
         <p className="text-[15px] leading-relaxed text-muted-foreground mb-4">
