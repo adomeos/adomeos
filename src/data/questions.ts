@@ -7,7 +7,7 @@ export const questions: Question[] = [
     text: 'Le matin, c\'est quoi ton premier réflexe ?',
     type: 'single',
     options: [
-      { letter: 'A', text: 'Je checke mon téléphone avant même de me lever. Mails, messages...' },
+      { letter: 'A', text: 'Je check mon téléphone avant même de me lever. ' },
       { letter: 'B', text: 'J\'ai une routine stricte que je suis à la lettre. Pas le choix.' },
       { letter: 'C', text: 'Ça dépend des jours. J\'ai pas vraiment de constance.' },
       { letter: 'D', text: 'Je prends mon temps, tranquille. Pas de rush.' },
