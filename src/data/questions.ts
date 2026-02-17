@@ -117,7 +117,7 @@ export const questions: Question[] = [
     options: [
       { letter: 'A', text: 'Je sais plus. Ça fait bien longtemps...' },
       { letter: 'B', text: 'Récemment, mais j\'ai culpabilisé après.' },
-      { letter: 'C', text: 'J\'ai du mal à voir ce qui me fait plaisir, en vrai.' },
+      { letter: 'C', text: 'Je crois que j\'ai du mal à savoir ce qui me fait vraiment plaisir.' },
       { letter: 'D', text: 'Cette semaine. Je m\'accorde ça régulièrement.' },
     ],
   },
