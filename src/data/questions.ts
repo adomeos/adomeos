@@ -69,7 +69,7 @@ export const questions: Question[] = [
     options: [
       { letter: 'A', text: 'J\'oublie de manger ou je mange devant l\'écran sans m\'en rendre compte.' },
       { letter: 'B', text: 'Je mange, mais c\'est du carburant, pas du plaisir.' },
-      { letter: 'C', text: 'J\'ai des cycles : régime strict, puis craquages. Je contrôle pas.' },
+      { letter: 'C', text: 'J\'ai des cycles : régime strict puis craquage. Je ne contrôle pas.' },
       { letter: 'D', text: 'Équilibré. Je prends le temps de manger, j\'apprécie.' },
     ],
   },
