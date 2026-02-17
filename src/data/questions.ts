@@ -43,7 +43,7 @@ export const questions: Question[] = [
     text: 'Les gens autour de toi diraient que tu es :',
     type: 'single',
     options: [
-      { letter: 'A', text: 'Impressionnant mais épuisant' },
+      { letter: 'A', text: 'Trop relax et pas assez sérieux' },
       { letter: 'B', text: 'Quelqu\'un qui se met trop de pression' },
       { letter: 'C', text: 'Difficile à suivre, toujours à 100 à l\'heure' },
       { letter: 'D', text: 'Plutôt équilibré' },
