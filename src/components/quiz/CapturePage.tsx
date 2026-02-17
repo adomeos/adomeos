@@ -72,25 +72,25 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
       className="flex flex-col text-left min-h-[calc(100vh-80px)] pt-8">
 
       {/* Avant de continuer */}
-      <div className="bg-card border border-border rounded-2xl p-6 mb-8">
-        <h3 className="text-sm font-semibold text-primary uppercase tracking-wide mb-4">
-          Avant de continuer
-        </h3>
-        
-        <p className="text-[15px] leading-relaxed mb-4">
-          J'ai créé ce test pour Ceux qui carburent à 100% en permanence, qui ont "réussi" sur le papier mais qui sentent que quelque chose ne va pas à l'intérieur.
-          <br /><br />
-          <strong>ceux qui carburent à 100% en permanence</strong>, qui ont "réussi" sur le papier mais qui sentent que quelque chose ne va pas à l'intérieur.
-        </p>
-        
-        <p className="text-[15px] leading-relaxed text-muted-foreground mb-4">
-          Si t'as reconnu des trucs que t'as jamais dit à personne. Des patterns que t'observes depuis des années sans réussir à les changer. <strong className="text-foreground">C'est que t'es au bon endroit.</strong>
-        </p>
-        
-        <p className="text-[15px] leading-relaxed text-muted-foreground">
-          Ceux qui ont l'impression que personne ne peut vraiment les aider parce qu'ils sont trop différents, qu'ils ont tout essayé ou parce que "on est jamais mieux servi que par soi-même"
-        </p>
-      </div>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       {/* Ton analyse arrive */}
       <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-6">
