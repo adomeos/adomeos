@@ -166,7 +166,7 @@ export const questions: Question[] = [
     options: [
       { letter: 'A', text: 'Ça a marché un temps, puis je suis retombé dans mes travers.' },
       { letter: 'B', text: 'Toujours plus de méthodes, toujours faire plus, mais ça va pas mieux.' },
-      { letter: 'C', text: 'Ça a un peu aidé, mais c\'est pas la solution.' },
+      { letter: 'C', text: 'Ça m\'a aidé un peu, mais je crois que c\'est pas la solution.' },
       { letter: 'D', text: 'Ça a vraiment marché pour moi.' },
     ],
   },
