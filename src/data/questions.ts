@@ -31,7 +31,7 @@ export const questions: Question[] = [
     text: 'Cette phrase, elle te parle ?',
     type: 'single',
     options: [
-      { letter: 'A', text: 'Putain. C\'est exactement ça.' },
+      { letter: 'A', text: 'C\'est exactement ça.' },
       { letter: 'B', text: 'Ça me parle en partie, oui.' },
       { letter: 'C', text: 'Pas vraiment.' },
       { letter: 'D', text: 'Pas du tout. Je suis satisfait de ma vie.' },
