@@ -115,7 +115,7 @@ export const questions: Question[] = [
     text: 'La dernière fois que t\'as fait un truc juste pour le plaisir, sans objectif ?',
     type: 'single',
     options: [
-      { letter: 'A', text: 'Je sais plus. Ça fait longtemps, la dernière fois.' },
+      { letter: 'A', text: 'Je sais plus. Ça fait bien longtemps...' },
       { letter: 'B', text: 'Récemment, mais j\'ai culpabilisé après.' },
       { letter: 'C', text: 'J\'ai du mal à voir ce qui me fait plaisir, en vrai.' },
       { letter: 'D', text: 'Cette semaine. Je m\'accorde ça régulièrement.' },
