@@ -42,7 +42,7 @@ export function ConfirmationPage({ leadData }: ConfirmationPageProps) {
       >
         <div
           className="relative w-full rounded-2xl overflow-hidden border border-border"
-          style={{ paddingBottom: "10%" }}
+          style={{ paddingBottom: "70%" }}
         >
           <iframe
             src="https://www.youtube-nocookie.com/embed/UISHMLnv8FY?rel=0&modestbranding=1&showinfo=0"
