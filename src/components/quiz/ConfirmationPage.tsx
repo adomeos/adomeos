@@ -39,7 +39,7 @@ export function ConfirmationPage({ leadData }: ConfirmationPageProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="mt-10 w-full max-w-[520px] mx-auto"
+        className="mt-10 w-full max-w-[80%] mx-auto"
       >
         <div className="relative w-full rounded-2xl overflow-hidden border border-border" style={{ paddingBottom: '56.25%' }}>
           <iframe
