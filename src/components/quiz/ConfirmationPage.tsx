@@ -34,6 +34,24 @@ export function ConfirmationPage({ leadData }: ConfirmationPageProps) {
         Ton analyse personnalisée arrive sur <strong className="text-[#25D366]">WhatsApp</strong> dans les prochaines minutes.
       </p>
 
+      {/* Video */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        className="mt-10 w-full max-w-[520px] mx-auto"
+      >
+        <div className="relative w-full rounded-2xl overflow-hidden border border-border" style={{ paddingBottom: '56.25%' }}>
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/UISHMLnv8FY?rel=0&modestbranding=1&showinfo=0"
+            title="Vidéo"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="absolute inset-0 w-full h-full"
+          />
+        </div>
+      </motion.div>
+
       {/* Big WhatsApp CTA */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
