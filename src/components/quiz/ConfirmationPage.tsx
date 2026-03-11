@@ -38,7 +38,7 @@ export function ConfirmationPage({ leadData }: ConfirmationPageProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="mt-10 w-full max-w-[80%] mx-auto"
+        className="mt-10 w-[min(92vw,1100px)] max-w-none mx-auto relative left-1/2 -translate-x-1/2"
       >
         <div
           className="relative w-full rounded-2xl overflow-hidden border border-border"
