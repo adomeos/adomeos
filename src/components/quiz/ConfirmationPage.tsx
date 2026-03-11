@@ -33,6 +33,11 @@ export function ConfirmationPage({ leadData }: ConfirmationPageProps) {
         minutes.
       </p>
 
+      {/* Teaser text */}
+      <p className="mt-8 mb-2 text-lg text-muted-foreground">
+        En attendant je t'invite à regarder cette vidéo si tu te demandes qui je suis et ce que je fais
+      </p>
+
       {/* Video */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
