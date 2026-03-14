@@ -59,6 +59,25 @@ export function ConfirmationPage({ leadData }: ConfirmationPageProps) {
         </div>
       </motion.div>
 
+      {/* GHL Calendar Embed */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+        className="mt-10 relative left-1/2 right-1/2 -ml-[40vw] -mr-[40vw] w-[80vw]"
+      >
+        <h2 className="text-2xl font-bold mb-6">Réserve ton créneau</h2>
+        <div className="rounded-2xl overflow-hidden border border-border bg-card">
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/booking/mAIicXExqqCZze4fyoSD"
+            style={{ width: "100%", border: "none", overflow: "hidden", minHeight: "800px" }}
+            scrolling="no"
+            id="mAIicXExqqCZze4fyoSD_1773508800917"
+            title="Calendrier de réservation"
+          />
+        </div>
+      </motion.div>
+
       {/* Big WhatsApp CTA */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
