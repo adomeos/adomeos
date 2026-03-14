@@ -64,13 +64,14 @@ export function ConfirmationPage({ leadData }: ConfirmationPageProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="mt-10 relative left-1/2 right-1/2 -ml-[30vw] -mr-[30vw] w-[60vw]"
+        className="mt-10 mx-auto"
+        style={{ width: "650px", maxWidth: "90vw" }}
       >
         <h2 className="text-2xl font-bold mb-6">Réserve ton créneau</h2>
         <div className="rounded-2xl overflow-hidden border border-border bg-card">
           <iframe
             src="https://api.leadconnectorhq.com/widget/booking/mAIicXExqqCZze4fyoSD"
-            style={{ width: "100%", border: "none", overflow: "hidden", minHeight: "1100px" }}
+            style={{ width: "100%", border: "none", overflow: "hidden", height: "650px" }}
             scrolling="no"
             id="mAIicXExqqCZze4fyoSD_1773508800917"
             title="Calendrier de réservation"
