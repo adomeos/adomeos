@@ -189,7 +189,7 @@ interface LeadData {
   phone: string;
 }
 
-const WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/pUkXYvprsnYvdTCCNF9R/webhook-trigger/bde53c07-d7bb-47f5-82cf-f4747aa9b5be";
+const WEBHOOK_URL = Deno.env.get("VITE_GHL_WEBHOOK_URL");
 
 async function sendToWebhook(leadData: LeadData, summary: string, answers: Answer[]) {
   try {
