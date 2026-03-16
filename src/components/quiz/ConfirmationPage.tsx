@@ -69,7 +69,7 @@ export function ConfirmationPage({ leadData }: ConfirmationPageProps) {
         <div className="rounded-2xl overflow-hidden border border-border bg-card">
           <iframe
             src="https://api.leadconnectorhq.com/widget/booking/mAIicXExqqCZze4fyoSD"
-            style={{ width: "100%", border: "none", overflow: "hidden", minHeight: "800px" }}
+            style={{ width: "100%", border: "none", overflow: "hidden", minHeight: "1000px" }}
             scrolling="no"
             id="mAIicXExqqCZze4fyoSD_1773508800917"
             title="Calendrier de réservation"
