@@ -12,7 +12,7 @@ export function ConfirmationPage({ leadData }: ConfirmationPageProps) {
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="flex flex-col justify-center text-center min-h-[calc(100vh-80px)]"
+      className="flex flex-col text-center pt-10"
     >
       {/* WhatsApp Icon */}
       <motion.div
