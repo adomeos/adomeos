@@ -89,7 +89,7 @@ export async function generateAnalysis(answers: Record<string, any>): Promise<st
       "anthropic-version": "2023-06-01"
     },
     body: JSON.stringify({
-      model: "claude-sonnet-4-6-20260217",
+      model: "claude-sonnet-4-20250514",
       max_tokens: 500,
       system: SYSTEM_PROMPT,
       messages: [
