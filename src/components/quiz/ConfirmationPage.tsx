@@ -66,7 +66,7 @@ export function ConfirmationPage({ leadData }: ConfirmationPageProps) {
         transition={{ delay: 0.3 }}
         className="mt-10 relative left-1/2 right-1/2 -ml-[40vw] -mr-[40vw] w-[80vw]"
       >
-        <div className="rounded-2xl overflow-hidden bg-white">
+        <div className="overflow-hidden">
           <iframe
             src="https://api.leadconnectorhq.com/widget/booking/mAIicXExqqCZze4fyoSD"
             style={{ width: "100%", border: "none", overflow: "hidden", minHeight: "1000px" }}
