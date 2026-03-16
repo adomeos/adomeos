@@ -1,7 +1,9 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
+const ALLOWED_ORIGIN = Deno.env.get("ALLOWED_ORIGIN") || "https://adomeos.lovable.app";
+
 const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
@@ -187,9 +189,13 @@ interface LeadData {
   phone: string;
 }
 
-const WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/pUkXYvprsnYvdTCCNF9R/webhook-trigger/bde53c07-d7bb-47f5-82cf-f4747aa9b5be";
+const WEBHOOK_URL = Deno.env.get("VITE_GHL_WEBHOOK_URL");
 
 async function sendToWebhook(leadData: LeadData, summary: string, answers: Answer[]) {
+  if (!WEBHOOK_URL) {
+    console.warn("GHL_WEBHOOK_URL not configured, skipping webhook");
+    return;
+  }
   try {
     const response = await fetch(WEBHOOK_URL, {
       method: "POST",
@@ -207,7 +213,7 @@ async function sendToWebhook(leadData: LeadData, summary: string, answers: Answe
     });
     
     if (!response.ok) {
-      console.error("Webhook error:", response.status, await response.text());
+      console.error("Webhook error:", response.status);
     } else {
       console.log("Webhook sent successfully");
     }
@@ -297,14 +303,36 @@ serve(async (req) => {
   try {
     const { answers, leadData } = await req.json() as { answers: Answer[]; leadData?: LeadData };
 
-    if (!answers || !Array.isArray(answers)) {
+    if (!answers || !Array.isArray(answers) || answers.length === 0 || answers.length > 20) {
       return new Response(
         JSON.stringify({ error: "Missing or invalid answers array" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
-    console.log("Received answers:", JSON.stringify(answers));
+    // Validate lead data if provided
+    if (leadData) {
+      if (typeof leadData.firstName !== "string" || leadData.firstName.length > 100 ||
+          typeof leadData.email !== "string" || leadData.email.length > 255 ||
+          typeof leadData.phone !== "string" || leadData.phone.length > 30) {
+        return new Response(
+          JSON.stringify({ error: "Invalid lead data" }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+    }
+
+    // Validate each answer
+    for (const answer of answers) {
+      if (typeof answer.questionId !== "number" || answer.questionId < 1 || answer.questionId > 17) {
+        return new Response(
+          JSON.stringify({ error: "Invalid question ID" }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+    }
+
+    console.log("Received answers count:", answers.length);
 
     const formattedContext = formatAnswersForAI(answers);
     console.log("Formatted context for AI:", formattedContext);
