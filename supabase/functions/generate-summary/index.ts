@@ -299,14 +299,36 @@ serve(async (req) => {
   try {
     const { answers, leadData } = await req.json() as { answers: Answer[]; leadData?: LeadData };
 
-    if (!answers || !Array.isArray(answers)) {
+    if (!answers || !Array.isArray(answers) || answers.length === 0 || answers.length > 20) {
       return new Response(
         JSON.stringify({ error: "Missing or invalid answers array" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
-    console.log("Received answers:", JSON.stringify(answers));
+    // Validate lead data if provided
+    if (leadData) {
+      if (typeof leadData.firstName !== "string" || leadData.firstName.length > 100 ||
+          typeof leadData.email !== "string" || leadData.email.length > 255 ||
+          typeof leadData.phone !== "string" || leadData.phone.length > 30) {
+        return new Response(
+          JSON.stringify({ error: "Invalid lead data" }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+    }
+
+    // Validate each answer
+    for (const answer of answers) {
+      if (typeof answer.questionId !== "number" || answer.questionId < 1 || answer.questionId > 17) {
+        return new Response(
+          JSON.stringify({ error: "Invalid question ID" }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+    }
+
+    console.log("Received answers count:", answers.length);
 
     const formattedContext = formatAnswersForAI(answers);
     console.log("Formatted context for AI:", formattedContext);

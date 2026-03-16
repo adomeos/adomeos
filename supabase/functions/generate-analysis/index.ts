@@ -332,8 +332,22 @@ serve(async (req) => {
 
   try {
     const { firstname, email, phone, answers } = await req.json();
+
+    // Input validation
+    if (!firstname || typeof firstname !== "string" || firstname.length > 100) {
+      return new Response(JSON.stringify({ success: false, error: "Invalid firstname" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    }
+    if (!email || typeof email !== "string" || email.length > 255 || !email.includes("@")) {
+      return new Response(JSON.stringify({ success: false, error: "Invalid email" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    }
+    if (!phone || typeof phone !== "string" || phone.length > 30) {
+      return new Response(JSON.stringify({ success: false, error: "Invalid phone" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    }
+    if (!answers || typeof answers !== "object" || Object.keys(answers).length === 0 || Object.keys(answers).length > 20) {
+      return new Response(JSON.stringify({ success: false, error: "Invalid answers" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    }
     
-    console.log("Received request:", { firstname, email, phone, answersCount: Object.keys(answers).length });
+    console.log("Received request, answers count:", Object.keys(answers).length);
 
     const CLAUDE_API_KEY = Deno.env.get("VITE_CLAUDE_API_KEY");
     const GHL_WEBHOOK_URL = Deno.env.get("VITE_GHL_WEBHOOK_URL");
