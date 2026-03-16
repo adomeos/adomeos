@@ -66,6 +66,7 @@ export function ConfirmationPage({ leadData }: ConfirmationPageProps) {
         transition={{ delay: 0.3 }}
         className="mt-10 relative left-1/2 right-1/2 -ml-[40vw] -mr-[40vw] w-[80vw]"
       >
+        <h2 className="text-2xl font-bold mb-6 text-center">Réserve ton appel ici</h2>
         <div className="overflow-hidden">
           <iframe
             src="https://api.leadconnectorhq.com/widget/booking/mAIicXExqqCZze4fyoSD"
