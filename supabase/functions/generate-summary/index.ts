@@ -192,6 +192,10 @@ interface LeadData {
 const WEBHOOK_URL = Deno.env.get("VITE_GHL_WEBHOOK_URL");
 
 async function sendToWebhook(leadData: LeadData, summary: string, answers: Answer[]) {
+  if (!WEBHOOK_URL) {
+    console.warn("GHL_WEBHOOK_URL not configured, skipping webhook");
+    return;
+  }
   try {
     const response = await fetch(WEBHOOK_URL, {
       method: "POST",
@@ -209,7 +213,7 @@ async function sendToWebhook(leadData: LeadData, summary: string, answers: Answe
     });
     
     if (!response.ok) {
-      console.error("Webhook error:", response.status, await response.text());
+      console.error("Webhook error:", response.status);
     } else {
       console.log("Webhook sent successfully");
     }
