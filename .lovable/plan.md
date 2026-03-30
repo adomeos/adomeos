@@ -1,16 +1,29 @@
 
 
-## Plan : Accepter les numéros de téléphone internationaux (9 chiffres ou plus)
+## Plan : Envoyer le numéro avec l'indicatif pays
 
 ### Problème
-La validation actuelle exige **exactement 9 chiffres** après normalisation, ce qui bloque les numéros de pays comme le Royaume-Uni (10 chiffres), les USA (10 chiffres), etc.
+Actuellement, le `countryCode` (+33, +1, etc.) reste dans le composant `CapturePage` et n'est jamais transmis. Le numéro envoyé au webhook ne contient que les chiffres sans indicatif.
 
-### Modification
+### Modifications
 
-**Fichier : `src/components/quiz/CapturePage.tsx`**
+**1. `src/components/quiz/CapturePage.tsx`**
+- Concaténer `countryCode` + numéro normalisé avant d'appeler `onSubmit`
+- Le champ `phone` envoyé sera par ex. `+33612345678` ou `+14155551234`
 
-1. Changer la condition de validation du formulaire : `normalizedPhone.length === 9` → `normalizedPhone.length >= 7` (minimum 7 pour couvrir les plus petits formats internationaux)
-2. Changer le message d'erreur : afficher l'erreur uniquement si le numéro fait moins de 7 chiffres → "Numéro invalide (minimum 7 chiffres après l'indicatif)"
+**2. `src/hooks/useQuiz.ts`**
+- Aucun changement nécessaire, le `phone` reçu contiendra déjà l'indicatif complet
 
-Deux lignes à modifier, rien d'autre.
+**3. Edge functions** (`generate-analysis`, `generate-summary`)
+- Aucun changement nécessaire, elles transmettent le `phone` tel quel au webhook
+
+### Détail technique
+
+Dans `CapturePage.tsx`, modifier le `handleSubmit` :
+```ts
+const fullPhone = countryCode + normalizedPhone;
+onSubmit({ ...formData, phone: fullPhone });
+```
+
+Résultat : le CRM (GHL) recevra `+33612345678` au lieu de `612345678`.
 
