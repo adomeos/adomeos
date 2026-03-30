@@ -55,7 +55,7 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const normalizedPhone = normalizePhone(formData.phone);
-    if (formData.firstName && formData.email && normalizedPhone.length === 9) {
+    if (formData.firstName && formData.email && normalizedPhone.length >= 7) {
       onSubmit({ ...formData, phone: normalizedPhone });
     }
   };
