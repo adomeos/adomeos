@@ -55,7 +55,7 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const normalizedPhone = normalizePhone(formData.phone);
-    if (formData.firstName && formData.email && normalizedPhone.length === 9) {
+    if (formData.firstName && formData.email && normalizedPhone.length >= 7) {
       onSubmit({ ...formData, phone: normalizedPhone });
     }
   };
@@ -177,8 +177,8 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
               className="h-14 text-base bg-card border-border rounded-xl px-[18px] placeholder:text-muted-foreground focus:border-primary focus:bg-hover"
               required />
           </div>
-          {formData.phone && normalizePhone(formData.phone).length !== 9 &&
-          <p className="text-sm text-destructive mt-1">Numéro invalide (9 chiffres après l'indicatif)</p>
+        {formData.phone && normalizePhone(formData.phone).length < 7 &&
+          <p className="text-sm text-destructive mt-1">Numéro invalide (minimum 7 chiffres après l'indicatif)</p>
           }
         </div>
 
