@@ -56,7 +56,8 @@ export function CapturePage({ onSubmit }: CapturePageProps) {
     e.preventDefault();
     const normalizedPhone = normalizePhone(formData.phone);
     if (formData.firstName && formData.email && normalizedPhone.length >= 7) {
-      onSubmit({ ...formData, phone: normalizedPhone });
+      const fullPhone = countryCode + normalizedPhone;
+      onSubmit({ ...formData, phone: fullPhone });
     }
   };
 
